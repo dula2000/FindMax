@@ -20,10 +20,10 @@
         }
 
         //calling the FindMax method in main method
-        Console.WriteLine("\n\nMax Number is in the array is " +FindMax(items,size));
+        Console.WriteLine("\n\nMax Number is in the array is \n" +FindMax(items,size));
 
         //BucketSort
-        Console.WriteLine("Sorted array after using Bucket Sort");
+        Console.WriteLine("\nSorted array after using Bucket Sort\n");
         BucketSort(items,size);
         DisplayArray(items);
     }
@@ -57,21 +57,30 @@
     }
     static void BucketSort(double[] items, int length)
     {
-        int NoOfBucket = (int)Math.Ceiling(length / 5.0);
-        double max= FindMax(items, length);
-        double[] bucket = new double[NoOfBucket];
+        int n = items.Length;
+        List<double>[] bucket = new List<double>[n];
 
-        for(int i = 0; i < length; i++)
+        double maxValue= FindMax(items, length);
+        for (int i = 0; i < n; i++)
         {
-            int BucketIndex = (int)(items[i] * NoOfBucket / max);
-            bucket[BucketIndex] = items[i];
+            bucket[i] = new List<double>();
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+            int BucketIndex = (int)((items[i]/maxValue)*(n-1) );
+            bucket[BucketIndex].Add(items[i]);
         }
 
         int k = 0;
-        for(int i = 0; i < NoOfBucket; i++)
+        for(int i = 0; i < n; i++)
         {
-            if (bucket[i] !=0.0) {
-                items[k++] = bucket[i];
+            if (bucket[i].Count>0) {
+                bucket[i].Sort();
+                foreach (double item in bucket[i])
+                {
+                    items[k++] = item;
+                }
             }
         }
     }
