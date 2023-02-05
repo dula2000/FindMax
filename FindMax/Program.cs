@@ -4,16 +4,17 @@
     {
         Console.WriteLine("Enter the size of the array input");
         int size =int .Parse(Console.ReadLine());
-        int[] arr= new int[size];
+        double[] arr= new double[size];
          Random rand = new Random();
 
         for(int i=0; i<size; i++)
         {
-            arr[i] = rand.Next(0, size);
+            arr[i] = rand.NextDouble()*100;
         }
+        Console.WriteLine("The elements are in the array is : \t");
         for(int i=0; i<size; i++)
         {
-            Console.Write(arr[i]);
+            Console.WriteLine(arr[i]);
         }
     }
 }
