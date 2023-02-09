@@ -26,6 +26,12 @@
         Console.WriteLine("\nSorted array after using Bucket Sort\n");
         BucketSort(items,size);
         DisplayArray(items);
+
+
+        //selection sort
+        Console.WriteLine("\nSorted array after using selection sort");
+        selectionSort(items,size);
+        DisplayArray(items);
     }
 
     //Display the array
@@ -55,12 +61,14 @@
         }
         return max; 
     }
+
+    //bucket sort
     static void BucketSort(double[] items, int length)
     {
         int n = items.Length;
         List<double>[] bucket = new List<double>[n];
 
-        double maxValue= FindMax(items, length);
+        double maxValue= FindMax(items, length);  //calling findmax method
         for (int i = 0; i < n; i++)
         {
             bucket[i] = new List<double>();
@@ -84,6 +92,31 @@
             }
         }
     }
+
+    static void swap(double[] items, int no1, int no2)
+    {
+        double temperory= items[no1];
+        items[no1] = items[no2];
+        items[no2] = temperory;
+    }
+
+    static void selectionSort(double[] items, int length)
+    {
+        int maxIndex;
+        for(int i=length-1;i>=0;i--)
+        {
+            maxIndex = i;
+            for(int j = 0; j <= i; j++)
+            {
+                if (items[j] > items[maxIndex])
+                {
+                    maxIndex= j;
+                }
+            }
+        }
+    }
+
+
 
 
 }
