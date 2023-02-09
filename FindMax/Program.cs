@@ -114,7 +114,7 @@
                 {
                     maxIndex= j;
                 }
-               swap(items, j, maxIndex);
+              swap(items, i, maxIndex);
             }
         }
     }
